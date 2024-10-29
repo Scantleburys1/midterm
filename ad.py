@@ -2,6 +2,7 @@ import sys
 import random
 coins=0
 strength= random.randint(10,100)
+inventory=[]
 choice= input()
 def coin_update(sum):
     global coins
@@ -17,7 +18,8 @@ def left():
     print("The tunnel leads to a stream. Follow it downstream or upstream?")
     choice
 def right():
-    print("You walk down the path to a small clearing.")
+    print("You walk down the path to a small clearing.\nYou see the light coming from a hole at the top of the cave.")
+    print("The whispers are still distant, but is now accompanied by a faint flickering light.\nTo the 'right', you see a small opening. Just enough for you to crawl through..")
     print("Would you like to 'look' around, 'follow' the whispers, or go 'right'") 
     choice
 if choice==():
@@ -53,6 +55,14 @@ def l_run():
         print("You've sealed your fate. You become sacrifice to their God of Protection. Cool Guy.")
         print("Ending 3")
         sys.exit()
+def l_escape():
+    print("You escaped!")
+    if coins<=30:
+        print("You now travel aimlessly, trying to make a living. You dont have enough to integrate into nearby societies...")
+        print("Ending 5")
+    else:
+        print("You live a humble life in a nearby kingdom. Yet, every day until death, you think about what could've been.")
+        print("ending 6")
 def l_downstream():
     print("Following the stram downstream, you reach a waterfall. How will you get down?\n 'Jump'?\n 'Look' Around?")
     choice
@@ -80,14 +90,6 @@ def l_dark():
         print("")
         print("Ending 3")
         sys.exit()
-def l_escape():
-    print("You escaped!")
-    if coins<=30:
-        print("You now travel aimlessly, trying to make a living. You dont have enough to integrate into nearby societies...")
-        print("Ending 5")
-    else:
-        print("You live a humble life in a nearby kingdom. Yet, every day until death, you think about what could've been.")
-        print("ending 6")
 def l_fight():
     print("You put your fists up and duke it out with the snake!")
     if strength>=60:
@@ -98,4 +100,41 @@ def l_fight():
         print("The snake bites you, hard! You stagger then fall to the floor, venom coursing through your veins. It's over.")
         print("Ending 8")
         sys.exit()
+def r_look():
+    print("You found 45 coins, a map, and some warm clothes")
+    coin_update(45)
+    inventory.append("map")
+    inventory.append("clothes")
+    print("What will you do now?\n 'Follow' the whispers\n Go 'Right\n 'Go Back'")
+    choice
+    if choice==('Follow'or'follow'):
+        print(r_follow)
+    elif choice==('Right'or'right'):
+        print(r_right)
+def r_follow():
+    print("You follow the whispers, a light flickers dimly as the sounds get louder. You reach a cave room. On the other side of the opening there's a small group of people.")
+    print("They are skin and bones with thin hair and...dirty. You smell the faint twinge of blood in the air. Uh oh.")
+    print("Their eyes lock on you. They look like they haven't seen a meal in days. Their eyes go wide with newfound excitement. What will you do?")
+    print("'Run'!\n'Fight'!")
+    choice
+    if choice==('run'or'Run'):
+        print("You start to back away, but trip. They reach you quickly, mouths salvating. Your fate has been sealed.")
+        print()
 
+def r_right():
+    print("You crawl into the small opening. You see a bit of white light peering through some leaves covering the other end.")
+    if strength>=30 and ("clothes" in inventory):
+        print("You escaped! It's a little chiller than you last remember it, but you'll survive")
+        print("ending 9")
+        sys.exit()
+    elif strength>=30:
+        print("You escaped! It's a little chiller than you last remember it. You don't get far before the cold reaches you.")
+        print("ending 10")
+        sys.exit()
+    else:
+        print("Uh oh! You've gotten stuck! It looks like you didn't have enough strength to make it through...")
+        print("ending 11")
+        sys.exit()
+
+
+    
