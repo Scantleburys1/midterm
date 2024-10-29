@@ -1,6 +1,12 @@
+#Solina Scantlebury
+#Project: Will You Make it Out OK?
+#As the title suggest, they are few obstacles in your way, but it's all based on the user's choices that'll determine how dire the consequences may be.
+#This game is simply about a character who has no recollection of themselves or how they got there, only trying to find a way out and hopefully integrate back into society.
+
+
 import sys
 import random
-coins=0
+coins=0 #Starting coins
 strength= random.randint(10,100)
 inventory=[]
 choice= input()
